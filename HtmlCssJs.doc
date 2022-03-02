@@ -1,0 +1,69 @@
+## HTML 
+
+<html></html> : serves to inform web elements
+<css></css> : decorates html elements
+<javascript> : uses dynamic effect
+<tag></tag> : defines the attributes that belongs to the tag
+
+## Semantic tags in HTML
+
+<header></header>
+<nav></nav>
+<main></main>
+<article></article>
+<section></section>
+<aside></aside>
+<footer></footer>
+<div></div> : belongs to id, class
+
+## Other tags
+
+<hn></hn> : indicates the size of the letter
+<p></p> : text, paragraph
+<br></br> : can use alone, and makes to change the line
+<blockquote></blockquote> : uses for quotation and effects on indentation
+<strong></strong> : makes the text bold
+<em></em>, <i> : indicates italic
+
+## Make list
+
+<ol></ol> : ordered list
+<li></li> : ordered list in ol tags
+<ul></ul> : unordered list
+
+<dl></dl> : uses to make a list of explanations
+<dt></dt> : uses to make a list of explanations
+<dd></dd> : uses to make a list of explanations
+
+## Make table
+
+<table></table> : uses to make a table
+<caption></caption> : uses to make a tatle for table
+<tr></tr> : uses to make a row and column
+<td></td> : uses to make a row and column
+<thead></thead> : makes the structure of the table
+<tbody></tbody> : makes the structure of the table
+<tfoot></tfoot> : makes the structure of the table
+<rowspan></rowspan> : uses to combine row and column
+<colspan></colspan> : uses to combine row and column
+<col></col> : uses to designate the column
+<colgroup></colgroup> : uses to designate the column
+
+## Insert image
+
+<src></src> 
+<alt></alt>
+<object></object>
+<embed>
+
+## Form of image file
+
+<gif> : uses for small image 
+<jpg> : possible to express various colors and shades
+<jpeg> : same as jpg
+<png> : develops for purpose of network, makes clear background and useful in web
+
+<control> : Display the control bar on the player's screen
+<autoplay> : autoplay
+
+<a href></a> : attributes the link
