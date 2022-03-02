@@ -1,11 +1,11 @@
-## HTML 
+### HTML 
 
 <html></html> : serves to inform web elements
 <css></css> : decorates html elements
 <javascript> : uses dynamic effect
 <tag></tag> : defines the attributes that belongs to the tag
 
-## Semantic tags in HTML
+### Semantic tags in HTML
 
 <header></header>
 <nav></nav>
@@ -16,7 +16,7 @@
 <footer></footer>
 <div></div> : belongs to id, class
 
-## Other tags
+### Other tags
 
 <hn></hn> : indicates the size of the letter
 <p></p> : text, paragraph
@@ -25,7 +25,7 @@
 <strong></strong> : makes the text bold
 <em></em>, <i> : indicates italic
 
-## Make list
+### Make list
 
 <ol></ol> : ordered list
 <li></li> : ordered list in ol tags
@@ -35,7 +35,7 @@
 <dt></dt> : uses to make a list of explanations
 <dd></dd> : uses to make a list of explanations
 
-## Make table
+### Make table
 
 <table></table> : uses to make a table
 <caption></caption> : uses to make a tatle for table
@@ -49,14 +49,14 @@
 <col></col> : uses to designate the column
 <colgroup></colgroup> : uses to designate the column
 
-## Insert image
+### Insert image
 
 <src></src> 
 <alt></alt>
 <object></object>
 <embed>
 
-## Form of image file
+### Form of image file
 
 <gif> : uses for small image 
 <jpg> : possible to express various colors and shades
