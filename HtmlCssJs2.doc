@@ -1,0 +1,42 @@
+## HTML
+
+<form></form> : User can send information to the website and sending information resolves from server
+<fieldset></fieldset> : same as form format
+<legend></legend> : uses with the group of fieldset
+<label></label>
+
+What can attribute on form?
+1. method 
+Content can designate how can pass to the server
+- post : limit on data, but reveal on content from input
+- get : no limit on data, does not reveal on content
+
+2. name
+designates the name of the form with javascript
+
+3. action
+designates the server program within the tag
+
+4. target
+makes to open another location from action
+
+<input></input> : type the text from search engine
+<text> : size/value
+<password>
+<search>
+<checkbox>
+<radio> : enable to choose multiple selections 
+        : value/checked
+<number>
+<range> : number
+        : min, max, step
+<month, week, date, time>
+<submit> : button format, make to action
+<reset> : button format, make to reset
+<button>
+<file>
+<hidden>
+<autofocus> : uses to display the mouse pointer in the desired location as soon as the page is retrieved
+<placeholder> : shows "input" on blank
+<readonly> : read only
+<required> 
