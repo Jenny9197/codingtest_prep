@@ -1,0 +1,35 @@
+## Undefined / Null 
+Undefined usually come out when nothing can be returned. 
+Through 'console.log' on the prompt, It can make something to print out, but result
+does not have anything.
+
+Undefined is data type, string
+
+Undefined is not equal to false.
+
+console.log('Hello, Undefined!');
+-> Hello, Undefined!
+
+typeof undefined;
+-> undefined
+
+!!undefined;
+-> false
+
+
+
+Null is empty quote, but different with string
+
+undefined === null;
+-> false
+
+!!null;
+-> false
+
+null == false;
+-> false
+
+## famous bug on javascript
+typeof null;
+-> object
+
