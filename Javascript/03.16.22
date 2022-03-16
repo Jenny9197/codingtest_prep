@@ -1,0 +1,37 @@
+03.16.22 Keyword
+
+#forEach - Compared to for loop, forEach function is not good, but array can use in a row
+#map - array can use in a row
+#fill
+
+All of them are related to array function in JS.
+
+순서도 그리기 (로또 추첨기)
+
+center point : 비동기 -> 실제 코딩순서와 다르게 동작하는 코드 ex) eventListener 
+
+공 뽑기
+
+const candidate = Array(45).fill().map(v, i) => i+1
+
+#slice() vs splace()
+
+#sort() 정렬하기
+
+#setTimeOut() 시간선언
+
+#let -> var 빈 공간으로 출력되니 유의!
+
+example.
+
+if(true) {
+  let a = 1
+}
+console.log(a)
+
+##let 대신 var 가 쓰일 경우, var 는 함수스코프이기 때문에 if문 안에 있으면 바깥에서 접근이 안됨 but let은 다르다.
+
+var scope와 함수와 함수 내부의 함수 closure가 복합적으로 만나 문제 발생
+다시 말해, closure는  await, athink 인 비동기와 var 가 만나 발생한다고 생각하면 된다
+
+함수와 함수 밖의 함수를 함수와 함수안의 함수로 바꿔줘야 한다. 
