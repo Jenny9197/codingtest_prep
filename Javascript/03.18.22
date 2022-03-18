@@ -26,7 +26,7 @@
 const randomcell = emptyCells[Math.random() * emptyCells.length)];
 const draw = rows.flat().every((cell) => cell.textContent);
 table.removeEventListener('click', callback); 
-
+const emptyCells = rows.flat().filter((v) => !v.textContent);
 
 computer turn을 만들고자 할떄,
 let clickable = true;
