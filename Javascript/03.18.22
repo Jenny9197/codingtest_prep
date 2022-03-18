@@ -1,0 +1,34 @@
+#03.18.22
+#Tic Tac Toe game 
+
+#required to use array (two dimensional array)
+#td와 tr을 통해 table 구성
+
+
+#point: event bubbling
+#By using event bubbling, header or div can connect with event listener
+
+<code>
+
+<header>
+ <div>
+   <button>
+ <div>
+</header>
+
+<script>
+ document.querySelector('header').addEventListener('click', () => {
+  console.log('hello, event bubbling');
+ });
+<script>
+
+<important point>
+const randomcell = emptyCells[Math.random() * emptyCells.length)];
+const draw = rows.flat().every((cell) => cell.textContent);
+table.removeEventListener('click', callback); 
+
+
+computer turn을 만들고자 할떄,
+let clickable = true;
+let clickable = false;
+let clickable = true;
