@@ -1,0 +1,23 @@
+## class
+#Factory function, Prototype
+
+class 는 객체를 생성하기 위한 템플릿
+return 하는 함수를 만수를 만들어내는 것 => 객체를 반환하는 함수 (공장 함수)
+팩토리 함수 or 팩토리 패턴이라고 불림
+
+클래스에서 잘 쓰이는 것은 생성자 함수이다. 
+
+function ____ (name, hp, att, xp) {
+  this.name = name
+  this.hp = hp
+  this.att = att
+  this.xp = xp
+}
+
+const __  = new __ () ** required
+
+## attention
+생성자 함수를 사용하더라도 새로운 객체가 생성되어서 new 라는 객체가 필요하다
+new 라는 함수를 빼먹으면, this 가 window 가 되어버리고 해당 속성으로 바꾸어버리게 된다.
+관련있는 코드들은 같이 쓰는 것이 좋다. 
+prototype 도 function 따로 적어주는 것이 좋다.
