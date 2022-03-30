@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Calculator</title>
+    <link rel="stylesheet" href="calculator.css" />
+</head>
+
+<body>
+    <form>
+        <header>
+            <input class="result_blank" value="input_window" type="text" readonly/>
+        </header>
+        <input class="input_blank" type="text" style="margin-top: 50px; margin-bottom: 5px;" />
+        <input class="submit" type="submit" value="=" style="width: 500px; height:45px; display:block; margin:auto;">
+
+        <div class="table">
+            <table>
+                <tr>
+                    <td class='ac' colspan="4">AC</td>
+                </tr>
+                <tr>
+                    <td onclick='add(7)'>7</td>
+                    <td onclick='add(8)'>8</td>
+                    <td onclick='add(9)'>9</td>
+                    <td onclick='add("/")'>÷</td>
+                </tr>
+                <tr>
+                    <td onclick='add(4)'>4</td>
+                    <td onclick='add(5)'>5</td>
+                    <td onclick='add(6)'>6</td>
+                    <td onclick='add("*")'>x</td>
+                </tr>
+                <tr>
+                    <td onclick='add(1)'>1</td>
+                    <td onclick='add(2)'>2</td>
+                    <td onclick='add(3)'>3</td>
+                    <td onclick='add("-")'>-</td>
+                </tr>
+                <tr>
+                    <td colspan="2" onclick='add(0)'>0</td>
+                    <td onclick='add(".")'>.</td>
+                    <td onclick='add("+")'>+</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script src='calculator.js'></script>
+</body>
+
+</html>
