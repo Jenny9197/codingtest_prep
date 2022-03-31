@@ -1,0 +1,42 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div>
+        <form id="form">
+            <input type="text" id="input">
+            <button id="check">confirm</button>
+        </form>
+    </div>
+    <div id="logs"></div>
+    <script>
+        const $input = document.querySelector('#input');
+        const $form = document.querySelector('#form');
+        const $logs = document.querySelector('#logs');
+        let out = 0;
+
+        const number = [];
+        for (let i = 0; i < 9; i += 1) {
+            numbers.push(i + 1);
+        }
+        const answer = [];
+        for (let i = 0; i < 4; i += 1) {
+            const index = Math.floor(Math.random() * (numbers.length - i));
+            answer.push(numbers[index]);
+            numbers.splice(index, 1);
+        }
+        console.log(answer);
+
+        const tries = [];
+
+        function checkInput(input) {
+            if (input.length !== 4) {
+                return alert('put the 4 digit on number.')
+            }
+        }
+    </script>
+</body>
+
+</html>
