@@ -1,0 +1,41 @@
+body {
+    background-color: gray;
+    text-align: center;
+}
+
+header {
+    padding-bottom: 0;
+}
+
+.result_blank {
+    width: 600px;
+    height: auto;
+    font-size: 70px;
+    text-align: center;
+}
+
+.input_blank {
+    width: 600px;
+    height: auto;
+    font-size: 30px;
+}
+
+.submit {
+    width: 500px;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+td {
+    width: 70px;
+    height: 55px;
+    margin-right: 5px;
+    text-align: center;
+    font-weight: bolder;
+    border: 1px solid black;
+    user-select: none;
+}
