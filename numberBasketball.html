@@ -33,9 +33,64 @@
 
         function checkInput(input) {
             if (input.length !== 4) {
-                return alert('put the 4 digit on number.')
+                return alert('Put the 4 digit on number.')
             }
+            if (new Set(input).size !== 4) {
+                return alert('Do not type without duplicates')
+            }
+            if (tries.includes(input)) {
+                return alert('This is already been tried')
+            }
+            return true;
         }
+
+        function defeated() {
+            const message = document.createTextNode(`defeat! answer is ${answer.join('')}`);
+            $logs.appendChild(message);
+        }
+
+        $form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const value = $input.value;
+            $input.value = '';
+            if (checkInput(value)) {
+                if (answer.join('') === value) {
+                    $logs.textContent = 'HOMERUN';
+                    return;
+                }
+                if (tries.length >= 9) {
+                    defeated();
+                    return;
+                }
+            } else {
+                return;
+            }
+
+            let strike = 0;
+            let ball = 0;
+            for (let i = 0; i < answer.length; i += 1) {
+                const index = value.indexOf(answer[i]);
+                if (index > -1) {
+                    if (i === index) {
+                        strike += 1;
+                    } else {
+                        ball += 1;
+                    }
+                }
+            }
+
+            if (ball === 0 && strike == 0) {
+                out++;
+                $logs.append(`현재 아웃 개수  ${out}`, document.createElement('br'));
+            } else {
+                $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼 ${out} 아웃`, document.createElement('br'));
+            }
+            if (out === 3) {
+                defeated();
+                return;
+            }
+            tries.push(value);
+        });
     </script>
 </body>
 
