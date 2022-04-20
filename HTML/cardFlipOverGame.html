@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Declare the variable
+        var printCnt = document.getElementById('count');
+        var current = 0;
+        var ableFlip = true;
+        var total = 0;
+        var isExit = false;
+
+        //Declare card array
+        var cardNum = new Array(26);
+        var Real = new Array(13);
+        var Back = new Array(26);
+
+        for (var i = 0; i < clear.length; i++) {
+            clear[i] = false;
+        }
+        for (i = 0; i < Back.length; i++) {
+            Back[i] = 'back.png';
+        }
+
+        //html 동적으로 설정
+        var game = document.createElement('div');
+        game.id = 'game';
+        document.body.appendChild(game);
+
+        for (i = 0; i < 26; i++) {
+            Back[i] = document.createElement('img');
+            Back[i].arc = "back.png"
+            Back[i].id = i;
+            Back[i].setAttribute('onclick', 'cardFlip(this)');
+
+            Back[i].style.visibility = 'visible';
+            game.appendChild(Back[i]);
+
+            Back.width = 50;
+            Back.height = 50;
+            Back.className = Back[i] % 26;
+            Back.alt = '';
+        }
+
+        function Random() {
+            return Math.floor(Math.random() * 13 + 1);
+        }
+
+        function shuffle() {
+            for (var i = 0; i < cardNum.length; i++) {
+                var tmp = Random();
+                while (Real[tmp - 1] >= 2) {
+                    tmp = Random();
+                    console.log(Random());
+                }
+                cardNum[i] = tmp;
+                console.log("tmp" + tmp);
+                Real[tmp - 1]++;
+            }
+        }
+
+        shuffle();
+
+        function cardFilp(obj) {
+            if (ableFlip) {
+                if (Back[obj.id])
+                    pair[current] = obj.id;
+                obj.src = cardNum[obj.id] + "S" + '.jpg';
+                if (Back[obj.id] + "S" + '.jpg');
+                current++;
+                Back[obj.id] = false;
+
+                if (current == 2) {
+                    canFlip = false;
+
+                    if (cardNum[pair[0]] == cardNum[pair[1]]) {
+                        clear[pair[0]] = clear[pair[1]] = true;
+                        total = total + 2;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
