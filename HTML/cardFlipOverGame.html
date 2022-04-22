@@ -12,80 +12,117 @@
     <script>
         //Declare the variable
         var printCnt = document.getElementById('count');
-        var current = 0;
-        var ableFlip = true;
-        var total = 0;
-        var isExit = false;
+        var current = 0; //currently flipovered the card
+        var ableFlip = true; //can prevent turning over 2 cards
+        var total = 0; //counting the number for which has already been flipovered
+        var isExit = false; //game done
 
         //Declare card array
-        var cardNum = new Array(26);
-        var Real = new Array(13);
-        var Back = new Array(26);
+        var cardNum = new Array(26); //game board
+        var Real = new Array(13); //actual number of the card
+        var Back = new Array(26); //backside of the card
 
         for (var i = 0; i < clear.length; i++) {
             clear[i] = false;
         }
         for (i = 0; i < Back.length; i++) {
-            Back[i] = 'back.png';
-        }
+            Back[i] = 'back.png'; //filled with 26 cards in gameboard into backside
 
-        //html 동적으로 설정
-        var game = document.createElement('div');
-        game.id = 'game';
-        document.body.appendChild(game);
+            //html 동적으로 설정
+            var game = document.createElement('div');
+            game.id = 'game';
+            document.body.appendChild(game);
 
-        for (i = 0; i < 26; i++) {
-            Back[i] = document.createElement('img');
-            Back[i].arc = "back.png"
-            Back[i].id = i;
-            Back[i].setAttribute('onclick', 'cardFlip(this)');
+            for (i = 0; i < 13 * 2; i++) { //create backside of the card
+                Back[i] = document.createElement('img');
+                Back[i].arc = "back.png"
+                Back[i].id = i;
+                Back[i].setAttribute('onclick', 'cardFlip(this)');
+                //there is no onclick, required for setAttribute function
 
-            Back[i].style.visibility = 'visible';
-            game.appendChild(Back[i]);
+                Back[i].style.visibility = 'visible';
+                game.appendChild(Back[i]);
 
-            Back.width = 50;
-            Back.height = 50;
-            Back.className = Back[i] % 26;
-            Back.alt = '';
-        }
-
-        function Random() {
-            return Math.floor(Math.random() * 13 + 1);
-        }
-
-        function shuffle() {
-            for (var i = 0; i < cardNum.length; i++) {
-                var tmp = Random();
-                while (Real[tmp - 1] >= 2) {
-                    tmp = Random();
-                    console.log(Random());
-                }
-                cardNum[i] = tmp;
-                console.log("tmp" + tmp);
-                Real[tmp - 1]++;
+                Back.width = 50;
+                Back.height = 50;
+                Back.className = Back[i] % 26;
+                Back.alt = '';
             }
-        }
 
-        shuffle();
+            //bring card numbers randomly
+            function Random() {
+                return Math.floor(Math.random() * 13 + 1);
+            }
 
-        function cardFilp(obj) {
-            if (ableFlip) {
-                if (Back[obj.id])
-                    pair[current] = obj.id;
-                obj.src = cardNum[obj.id] + "S" + '.jpg';
-                if (Back[obj.id] + "S" + '.jpg');
-                current++;
-                Back[obj.id] = false;
-
-                if (current == 2) {
-                    canFlip = false;
-
-                    if (cardNum[pair[0]] == cardNum[pair[1]]) {
-                        clear[pair[0]] = clear[pair[1]] = true;
-                        total = total + 2;
+            //set the design of the card
+            function shuffle() {
+                for (var i = 0; i < cardNum.length; i++) {
+                    var tmp = Random();
+                    while (Real[tmp - 1] >= 2) {
+                        tmp = Random();
+                        console.log(Random());
                     }
+                    cardNum[i] = tmp;
+                    console.log("tmp" + tmp);
+                    Real[tmp - 1]++;
                 }
             }
+
+            shuffle();
+
+            function cardFilp(obj) {
+                if (ableFlip) {
+                    if (Back[obj.id])
+                        pair[current] = obj.id; //required for comparing the card
+                    obj.src = cardNum[obj.id] + "S" + '.jpg'; //scattering the card
+                    if (Back[obj.id] + "S" + '.jpg'); // back number
+                    current++;
+                    Back[obj.id] = false; //check the back number which is not equal
+
+                    if (current == 2) { //Once any two cards flipovered
+                        canFlip = false; //let to not make flipover
+
+                        if (cardNum[pair[0]] == cardNum[pair[1]]) { //check whether two cards match
+                            clear[pair[0]] = clear[pair[1]] = true;
+                            total = total + 2; //if matched
+
+                            if (total >= 26) {
+                                isExit = true; //exit the game
+
+                                var Button = document.getElementById('game');
+                                setTimeOut(function re() {
+                                    button.innerHTML = "<button onclick = 'restart()'>Restart</button>";
+                                }, 1000); //create Button //In case of ending the game, restart button creates
+                            }
+                        }
+                    }
+
+                    //card is flipovered again
+                    setTimeOut(function cardReFlip() {
+                        var reFlip = 0;
+                        var tempID;
+
+                        for (var i = 0; i < cardNum.length; i++) {
+                            if (!Back[i] && !clear[i]) {
+                                reFlip++;
+                                tempID = document.getElementById(i);
+                                tempID.src = "back.png";
+                                Back[i] = true;
+                            }
+
+                            if (reFlip >= 2) {
+                                break; //temporily stop if more than two
+                            }
+                        }
+                        current = 0; //initilize
+                        canFlip = true; // can flip again
+                    }, 500);
+                }
+            }
+        }
+
+        function restart() { //function for restart
+            window.location.reload(true);
         }
     </script>
 </body>
