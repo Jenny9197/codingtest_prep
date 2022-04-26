@@ -1,0 +1,148 @@
+Mainly, React uses "useEffect" and "useState"
+I would like to learn about those terms and summarize in my note.
+
+useEffect is a function that recognizes and updates renderings, or values of variables or objects when they change.
+
+After page is rendering, useEffect must conduct once.
+If useEffect which designates into array changes into useState, they must conduct the file
+
+** Basic form of useEffect
+useEffect( () => {}, []);
+
+when they used this way, it runs only once after the first rendering.
+The callback function is followed by a square bracket representing an array, where you specify Dependency.
+
+However, if there are no variables or values and only square brackets, it runs only once after rendering and never runs again
+
+**useEffect() is a hook which can work with specific things whenever component is rendering.
+
+**dependencies
+connection between two modules
+In object oriented language, it is called a relationship between two classes.
+
+const [name, setNams] = useState();
+useEffect( ()=> {},[name]);
+
+· deps 에 특정 값을 넣게 된다면 컴포넌트가 처음 마운트 될 때, 지정한 값이 바뀔 때, 언마운트 될 때, 값이 바뀌기 직전에 모두 호출합니다.
+
+· useEffect 안에서 사용하는 상태나, props 가 있다면, useEffect 의 deps 에 넣어주어야 하는 것이 규칙입니다.
+
+· 만약 사용하는 값을 넣어주지 않는다면, useEffect 안의 함수가 실행될 때 최신 상태, props를 가리키지 않습니다.
+
+· deps 파라미터를 생략한다면, 컴포넌트가 리렌더링 될 때마다 useEffect 함수가 호출됩니다.
+
+useEffect() 호출 방법
+
+​
+
+useEffect는 useEffect(callBackFunc, dependencies)로 두개의 인자를 넣어 호출할 수 있습니다.
+
+​
+
+· callBackFunc: 수행하고자 하는 작업
+
+· dependencies: 배열 형태이며, 배열 안에는 검사하고자 하는 특정 값 or 빈 배열이 들어간다.
+
+​
+
+​
+
+dependencies에 특정 값 넣기
+
+​
+
+· deps 에 특정 값을 넣게 된다면 컴포넌트가 처음 마운트 될 때, 지정한 값이 바뀔 때, 언마운트 될 때, 값이 바뀌기 직전에 모두 호출합니다.
+
+· useEffect 안에서 사용하는 상태나, props 가 있다면, useEffect 의 deps 에 넣어주어야 하는 것이 규칙입니다.
+
+· 만약 사용하는 값을 넣어주지 않는다면, useEffect 안의 함수가 실행될 때 최신 상태, props를 가리키지 않습니다.
+
+· deps 파라미터를 생략한다면, 컴포넌트가 리렌더링 될 때마다 useEffect 함수가 호출됩니다.
+
+
+useEffect() 사용 예시
+
+
+① useEffect(callBackFunc);
+
+ useEffect(() => {
+   // 실행 함수
+   console.log('hello!');
+ });
+· 렌더링 될 때마다 즉, 컴포넌트가 마운트 된 후, 업데이트된 후, 언마운트 되기 전에 실행되며 앞에서 말한 라이프 사이클 메서드를 모두 사용한 것과 마찬가지입니다.
+
+· 1과 같은 코드는 [dependencies] 생략으로 계속해서 렌더링이 발생되기 때문에 지양하는 것이 좋습니다.
+
+
+② useEffect(callBackFunc, []);
+
+useEffect(() => {
+   // 실행 함수
+   console.log('hello!');
+ }, []);
+· 컴포넌트가 최초 렌더링 됐을 때 한 번 실행합니다.
+
+· 라이프 사이클 메서드의 ComponentDidMount 를 대체할 수 있습니다.
+
+
+※ 함수 컴포넌트 (또는 함수 컴포넌트가 호출하는 함수 컴포넌트)가 props, state 또는 파생 된 값을 참조하지 않는 경우에만 [ ] 을 사용하는 것이 안전합니다.
+
+
+③ seEffect(callBackFunc, [deps1, deps2]);
+
+useEffect(() => {
+   console.log(`이름: ${name}, 나이: ${age}`);
+   console.log('업데이트 될 때 실행된다');
+ }, [name, age]);
+· 최초 렌더링 됐을 때, deps1 또는 deps2 가 변경되었을 때 실행합니다.
+
+· 라이프 사이클 메서드의 componentDidUpdate, getDerivedStateFromProps 를 대체할 수 있습니다.
+
+const didMount = useRef(true);
+ useEffect(() => {
+   if (didMount.current) {
+     didMount.current = false;
+   } else {
+        // 업데이트 시 실행 코드
+     console.log('update');
+   }
+ }, [...dependencies]);
+· 업데이트 될 때만 특정함수를 실행합니다.
+
+· 라이프 사이클 메서드의 componentDidUpdate 를 대체할 수 있습니다.
+
+
+
+④ useEffect(()=>{ return(() => func()) });
+
+ useEffect(() => {
+   console.log('effect');
+   return () => {
+     console.log('cleanup');
+   };
+ });
+· 언마운트 될 때만 clean-up 함수를 실행하고 싶을 때 : 두 번째 파라미터로 빈 배열을 넣어줍니다.
+
+· 특정값이 업데이트 되기 직전에 clean-up 함수를 실행하고 싶을 때 : deps 배열 안에 검사하고 싶은 값을 넣어줍니다.
+
+
+useEffect는 clean-up이라고 표현하는 함수를 return할 수 있는데, clean-up함수(리턴하는 함수)를 활용해 컴포넌트가 Unmount될 때 정리해야할 것을 처리합니다.
+
+clean-up 함수는 생명주기 메서드의 componentWillUnmount 역할을 대체할 수 있습니다.
+
+다음 코드를 실행하면 처음 렌더링 될 때 console.log(‘effect’)를 수행하고,
+
+컴포넌트가 업데이트 될 때 console.log(‘cleanup’) -> console.log(‘effect’) 순서로 실행되며,
+
+언마운트시 console.log(‘cleanup’)을 실행합니다.
+
+
+
+※ useEffect의 이펙트 함수에서 반환되는 cleanup 함수는 컴포넌트가 unmount되는 시점에만 실행되지는 않습니다.
+
+
+
+cleanup 함수는 이펙트가 실행되기 전에 매번 호출되며, 컴포넌트가 unmount 될 때 역시 실행됩니다.
+
+필요에 따라 모든 렌더링 전후에 사이드 이펙트를 발생시킬 수 있고, componentWillUnmount 보다 더 자주 호출됩니다.
+
