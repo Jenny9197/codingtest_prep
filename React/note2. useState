@@ -1,0 +1,37 @@
+React에서는 html 처럼 작성할 수 있는 기능이 있는데 이는 엄밀히 말하면 html이 아닌 jsx문법이다.
+그렇기 때문에, jsx에서 작성을 할 때에는 자바스크립트 문법을 따라야 한다.
+
+그럼 react는 왜 사용할까?
+=> React는 UI를 구현하는 자바스크립트의 라이브러리 중 하나로 유지보수가 쉽고, DOM관리에 수월하다는 장ㅂ점이 있다.
+
+서버에서는 specific data를 받아서 javascript를 통해 html에 넣어주는 것이 기본 js보다 직관적이다.
+
+***
+ document.getelementById.innerText()
+***
+
+"useState" is simply stored in storage and make it to amend once.
+If changing through useState, html is automatically re-rendering.
+
+***
+const [변경잦은데이터,데이터변경할때사용할함수] = useState(기본설정값)
+***
+
+***
+<div className='product'>
+          <h2> {변경잦은데이터} </h2>
+</div>
+***
+
+***
+Attention!
+
+1. 직접적으로 데이터를 건들면 안되고, 변경함수를 써야한다.
+const [변경잦은데이터,데이터변경할때사용할함수] = useState(기본설정값)
+
+2. 그리고 이 데이터는 깊은 복사를 통해 복사를 해야 한다.
+let newArray = [...변경하고싶은Array];
+newArray[0] = '변경된 데이터';
+
+3. array is array, number is number
+***
